@@ -9,6 +9,8 @@ enum BIT_VALUE
 double randd();
 uint64_t randi64();
 
+size_t GetLength(double min, double max, size_t precision);
+
 // supposed to be a power of two
 #define SIZE_BITS sizeof(uint64_t) * CHAR_BIT
 #define SIZE_POW 6 // 2 ^ 6 = 64

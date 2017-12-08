@@ -13,8 +13,8 @@ typedef double(*FITNESS_EVALUATION)(const ChromossomePtr& ch, void* globalContex
 
 enum SelectionAlgorithm
 {
-	ROULETTE_WHEEL,
-	TOURNAMENT
+	ROULETTE_WHEEL	= 0,
+	TOURNAMENT		= 1
 };
 
 enum CrossOverAlgorithm
@@ -25,24 +25,24 @@ enum CrossOverAlgorithm
 		Child1:  aaaadddd
 		Child2:  ccccbbbb
 	*/
-	HALF_SPLIT,
+	HALF_SPLIT		= 0,
 
 	/*
 		Same as half split, but a random position
 	*/
-	RANDOM_SPLIT,
+	RANDOM_SPLIT	= 1,
 
 	/*
 		Child1 and Child2 get different genes from 
 		parents (based on 50% probability)
 	*/
-	UNIFORM_CROSS
+	UNIFORM_CROSS	= 2
 };
 
 enum MutationAlgorithm
 {
-	RANDOM_ITERATION,
-	FLIP_ONE
+	RANDOM_ITERATION	= 0,
+	FLIP_ONE			= 1
 };
 
 /*

@@ -7,6 +7,8 @@
 #include "Test_SixHump.hpp"
 #include "Test_Rastrigin.hpp"
 #include "Test_Griewangk.hpp"
+#include "Test_Genetic_Supervisor.hpp"
+
 #include <functional>
 #include <iostream>
 #include <string>
@@ -57,12 +59,12 @@ void dump_func(
 }
 
 int main(int argc, char* argv[])
-{
-	
+{	
+	//SuperviseSchwefel(30);
 	dump_func(TestSixHump, "SixHump", 2, 200, 500);
 
-	dump_func(TestSchwefel, "Schwefel", 5, 300, 300);
-	dump_func(TestSchwefel, "Schwefel", 10, 1000, 300);
+	dump_func(TestSchwefel, "Schwefel", 5, 300, 500);
+	dump_func(TestSchwefel, "Schwefel", 10, 1000, 500);
 	dump_func(TestSchwefel, "Schwefel", 30, 2000, 500);
 
 	dump_func(TestGriewangk, "Griewangk", 5, 100, 200);
