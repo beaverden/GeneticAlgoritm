@@ -60,11 +60,14 @@ void dump_func(
 
 int main(int argc, char* argv[])
 {	
-	//SuperviseSchwefel(30);
+	//SuperviseRastrigin(5);
+	//SuperviseSchwefel(5);
+	
 	dump_func(TestSixHump, "SixHump", 2, 200, 500);
 
 	dump_func(TestSchwefel, "Schwefel", 5, 300, 500);
 	dump_func(TestSchwefel, "Schwefel", 10, 1000, 500);
+	/*
 	dump_func(TestSchwefel, "Schwefel", 30, 2000, 500);
 
 	dump_func(TestGriewangk, "Griewangk", 5, 100, 200);
@@ -74,6 +77,6 @@ int main(int argc, char* argv[])
 	dump_func(TestRastrigin, "Rastrigin", 5, 100, 500);
 	dump_func(TestRastrigin, "Rastrigin", 10, 300, 500);
 	dump_func(TestRastrigin, "Rastrigin", 30, 500, 500);
-
+	*/
 	return 0;
 }

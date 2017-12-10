@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <queue>
 #include <memory>
-
+#include <functional>
 
 typedef Chromossome* ChromossomePtr;
 typedef std::pair<ChromossomePtr, double> EvaluatedChromossome;
@@ -76,6 +76,10 @@ struct IV
 
 	// Global Context
 	void* globalContext = nullptr;
+
+	// Max thread count
+	bool threaded = false;
+	size_t maxThreads = 4;
 };
 
 class GeneticAlgorithm
@@ -104,11 +108,12 @@ public:
 	void GeneticAlgorithm::Update();
 	void GeneticAlgorithm::Update(size_t generations);
 
+	EvaluatedChromossome Evaluate(ChromossomePtr ch);
 protected:
 	/*
 		Returns a pair of a ChromossomePtr and a double, representing the Chromossome and it's fitness value
 	*/
-	EvaluatedChromossome Evaluate(ChromossomePtr ch);
+	
 
 	//Selection methods
 	void GeneticAlgorithm::RouletteWheelSelection();
@@ -152,4 +157,14 @@ protected:
 
 	//Tournament related
 	size_t tournamentSize;
+
+	//Threads
+	bool threaded;
+	size_t maxThreads;
+};
+
+struct ThreadedParamEval
+{
+	ChromossomePtr ptr;
+	EvaluatedChromossome* toEval;
 };

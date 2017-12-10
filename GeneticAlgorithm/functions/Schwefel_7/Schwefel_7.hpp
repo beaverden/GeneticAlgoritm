@@ -13,6 +13,6 @@ struct SchwefelContext
 
 double to_float(uint64_t val, SchwefelContext* global);
 
-double Schwafel(ChromossomePtr ch, void* globalContext);
+double Schwefel(ChromossomePtr ch, void* globalContext);
 
-double SchwafelEval(const ChromossomePtr& ch, void* globalContext);
+double SchwefelEval(const ChromossomePtr& ch, void* globalContext);

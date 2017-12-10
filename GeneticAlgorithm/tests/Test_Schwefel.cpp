@@ -32,7 +32,7 @@ std::pair<double, double> TestSchwefel(
 	IV iv;
 	iv.populationSize = popSize;
 	iv.codeLength = context.N * context.valueSizeBits;
-	iv.fitnessEval = SchwafelEval;
+	iv.fitnessEval = SchwefelEval;
 	iv.globalContext = &context;
 	iv.mutationRate = 0.008;
 	iv.crossoverRate = 0.7;
@@ -53,14 +53,14 @@ std::pair<double, double> TestSchwefel(
 		if (file != nullptr)
 		{
 			(*file).precision(5);
-			(*file) << std::fixed << Schwafel(bestCh.first, &context) << std::endl;
+			(*file) << std::fixed << Schwefel(bestCh.first, &context) << std::endl;
 		}
-		//printf("%f\n", Schwafel(bestCh.first, &context));
+		//printf("%f\n", Schwefel(bestCh.first, &context));
 	}
 	EvaluatedChromossome bestCh = gen.GetKthBest(0);
 
 	const clock_t end_time = clock();
-	double value = Schwafel(bestCh.first, &context);
+	double value = Schwefel(bestCh.first, &context);
 	double time = (double)(end_time - begin_time) / CLOCKS_PER_SEC;
 	
 	return std::make_pair(value, time);

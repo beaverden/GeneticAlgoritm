@@ -6,6 +6,8 @@ enum BIT_VALUE
 	ONE = 1
 };
 
+double to_float(uint64_t intValue, double min, double max, size_t valueSizeBits);
+
 double randd();
 uint64_t randi64();
 

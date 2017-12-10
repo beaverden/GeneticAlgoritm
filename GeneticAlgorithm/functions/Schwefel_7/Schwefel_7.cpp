@@ -9,7 +9,7 @@ double to_float(uint64_t val, SchwefelContext* global)
 
 // Returns the actual value of the function on
 // a given Chromossome
-double Schwafel(ChromossomePtr ch, void* globalContext)
+double Schwefel(ChromossomePtr ch, void* globalContext)
 {
 	SchwefelContext* global = (SchwefelContext*)(globalContext);
 	double *x = new double[global->N];
@@ -31,7 +31,7 @@ double Schwafel(ChromossomePtr ch, void* globalContext)
 
 // Fitness function for the Genetic Algorithm that
 // Uses the actual value of the function
-double SchwafelEval(const ChromossomePtr& ch, void* globalContext)
+double SchwefelEval(const ChromossomePtr& ch, void* globalContext)
 {
-	return (-Schwafel(ch, globalContext));
+	return (-Schwefel(ch, globalContext));
 }
