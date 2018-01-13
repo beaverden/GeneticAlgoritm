@@ -41,6 +41,7 @@ public:
 	}
 
 	uint64_t GetBitsAsInt(size_t count);
+	void CodeIterator::SetIntAsBits(uint64_t value, size_t count);
 	void SetBit(BIT_VALUE value);
 	void FlipBit();
 private:

@@ -24,6 +24,10 @@ uint64_t randi64()
 size_t GetLength(double min, double max, size_t precision)
 {
 	size_t result = (size_t)ceil(log2((max - min)*pow10[precision]));
+	if (fabs(log2((max - min)*pow10[precision])) - result <= FLT_EPSILON)
+	{
+		result++;
+	}
 	return std::max(1u, result);
 }
 

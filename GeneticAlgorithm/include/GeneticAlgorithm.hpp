@@ -12,8 +12,8 @@ typedef Chromossome* ChromossomePtr;
 typedef std::pair<ChromossomePtr, double> EvaluatedChromossome;
 typedef std::pair<ChromossomePtr, ChromossomePtr> ChromossomePair;
 typedef std::function<double(const ChromossomePtr& ch, void* globalContext)> FITNESS_EVALUATION;
-typedef std::function<ChromossomePair(const ChromossomePtr& ch1, const ChromossomePtr& ch2)> CrossoverFunction;
-typedef std::function<void(ChromossomePtr ch1)> MutationFunction;
+typedef std::function<ChromossomePair(const ChromossomePtr& ch1, const ChromossomePtr& ch2, void* globalContext)> CrossoverFunction;
+typedef std::function<void(ChromossomePtr ch1, void* globalContext)> MutationFunction;
 typedef std::function <ChromossomePtr(IV* data)> CustomGenerate;
 
 enum SelectionAlgorithm

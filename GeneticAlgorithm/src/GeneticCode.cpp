@@ -1,11 +1,13 @@
 #include "stdafx.hpp"
 #include "GeneticCode.hpp"
 #include <random>
+#include <assert.h>
+
 
 Chromossome::Chromossome(size_t codeLength) :
 	codeLength(codeLength), arrayLength((codeLength >> SIZE_POW) + 1)
 {
-	this->code = new uint64_t[arrayLength];
+	this->code = new uint64_t[arrayLength]();
 	for (uint64_t i = 0; i < arrayLength; i++)
 	{
 		code[i] = randi64();
@@ -201,7 +203,7 @@ uint64_t CodeIterator::GetBitsAsInt(size_t count)
 	uint64_t ret = 0;
 	if (this->bitPosition + count - 1 < this->code->getLength())
 	{
-		for (size_t i = 0; i < count; i++)
+		for (uint64_t i = 0; i < count; i++)
 		{
 			if (GET_FROM_ARRAY(code->getCode(), this->bitPosition + i))
 			{
@@ -210,6 +212,24 @@ uint64_t CodeIterator::GetBitsAsInt(size_t count)
 		}
 	}
 	return ret;
+}
+
+void CodeIterator::SetIntAsBits(uint64_t value, size_t count)
+{
+	uint64_t pos = this->bitPosition;
+	int v = 0;
+	for (size_t i = 0; i < count; i++)
+	{		
+		if (GET_FROM_LOWEST(value, i) != 0)
+		{
+			SET_IN_ARRAY(code->getCode(), pos);
+		}
+		else
+		{
+			UNSET_IN_ARRAY(code->getCode(), pos);
+		}
+		pos++;
+	}
 }
 
 void CodeIterator::SetBit(BIT_VALUE value)

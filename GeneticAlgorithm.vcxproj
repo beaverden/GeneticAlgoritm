@@ -163,6 +163,7 @@
     <ClInclude Include="GeneticAlgorithm\tests\Test_Rastrigin.hpp" />
     <ClInclude Include="GeneticAlgorithm\tests\Test_Schwefel.hpp" />
     <ClInclude Include="GeneticAlgorithm\tests\Test_SixHump.hpp" />
+    <ClInclude Include="GeneticAlgorithm\tests\TravelingSalesman\Salesman.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GeneticAlgorithm\functions\Griewangk\Griewangk.cpp" />

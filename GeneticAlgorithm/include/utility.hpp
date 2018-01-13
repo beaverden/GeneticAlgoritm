@@ -33,6 +33,8 @@ size_t GetLength(double min, double max, size_t precision);
 
 #define SET_FROM_LOWEST(x, n)\
 		((x) |= (1ULL << (n)))
+#define GET_FROM_LOWEST(x, n)\
+		((x) & (1ULL << (n)))
 
 #define PI 3.14159265
 

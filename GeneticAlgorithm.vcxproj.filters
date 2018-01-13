@@ -63,6 +63,9 @@
     <ClInclude Include="GeneticAlgorithm\functions\Griewangk\Griewangk.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeneticAlgorithm\tests\TravelingSalesman\Salesman.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GeneticAlgorithm\src\GeneticAlgorithm.cpp">
