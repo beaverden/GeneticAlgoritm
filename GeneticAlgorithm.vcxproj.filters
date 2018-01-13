@@ -107,5 +107,8 @@
     <ClCompile Include="GeneticAlgorithm\functions\Griewangk\Griewangk.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GeneticAlgorithm\tests\TravelingSalesman\Salesman.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

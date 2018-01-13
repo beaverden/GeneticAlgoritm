@@ -6,10 +6,15 @@
 #include <memory>
 #include <functional>
 
+struct IV;
+
 typedef Chromossome* ChromossomePtr;
 typedef std::pair<ChromossomePtr, double> EvaluatedChromossome;
 typedef std::pair<ChromossomePtr, ChromossomePtr> ChromossomePair;
-typedef double(*FITNESS_EVALUATION)(const ChromossomePtr& ch, void* globalContext);
+typedef std::function<double(const ChromossomePtr& ch, void* globalContext)> FITNESS_EVALUATION;
+typedef std::function<ChromossomePair(const ChromossomePtr& ch1, const ChromossomePtr& ch2)> CrossoverFunction;
+typedef std::function<void(ChromossomePtr ch1)> MutationFunction;
+typedef std::function <ChromossomePtr(IV* data)> CustomGenerate;
 
 enum SelectionAlgorithm
 {
@@ -36,13 +41,15 @@ enum CrossOverAlgorithm
 		Child1 and Child2 get different genes from 
 		parents (based on 50% probability)
 	*/
-	UNIFORM_CROSS	= 2
+	UNIFORM_CROSS	= 2,
+	CUSTOM_CROSS	= 3
 };
 
 enum MutationAlgorithm
 {
 	RANDOM_ITERATION	= 0,
-	FLIP_ONE			= 1
+	FLIP_ONE			= 1,
+	CUSTOM_MUTATION		= 2
 };
 
 /*
@@ -64,11 +71,16 @@ struct IV
 	// Algorithms
 	SelectionAlgorithm selectionAlgo = TOURNAMENT;
 	CrossOverAlgorithm crossoverAlgo = RANDOM_SPLIT;
+	
 
 	// Mutation
 	MutationAlgorithm mutationAlgo = RANDOM_ITERATION;
+	
 
 	// Functions
+	CustomGenerate customGenerate = nullptr;
+	CrossoverFunction customCrossover = nullptr;
+	MutationFunction customMutation = nullptr;
 	FITNESS_EVALUATION fitnessEval = nullptr;
 
 	// Tournament related value
@@ -146,6 +158,9 @@ protected:
 	MutationAlgorithm mutationAlgorithm;
 	double mutationRate;
 
+	CustomGenerate customGenerate = nullptr;
+	CrossoverFunction customCrossover = nullptr;
+	MutationFunction customMutation = nullptr;
 	FITNESS_EVALUATION fitnessEval;
 
 	std::vector<EvaluatedChromossome> population;
