@@ -17,7 +17,7 @@
 #include <future>
 #include <vector>
 #include <experimental/filesystem>
-#define NO_ITERATIONS 4
+#define NO_ITERATIONS 2
 
 void dump_func(
 	std::function<std::pair<double, double>(size_t, size_t, size_t, std::ofstream*)> func,
@@ -113,7 +113,7 @@ void dump_salesman(
 	double avgValue = 0;
 	for (size_t i = 0; i < NO_ITERATIONS; i++)
 	{
-		values[i] = std::async(TestSalesman, &context);
+		values[i] = std::async(HillClimbing, &context);
 	}
 	for (size_t i = 0; i < NO_ITERATIONS; i++)
 	{
@@ -141,9 +141,9 @@ void dump_salesman(
 
 int main(int argc, char* argv[])
 {
+	
+	dump_salesman("bayg29");
 	/*
-	dump_salesman("att48");
-
 	//SuperviseRastrigin(5);
 	//SuperviseSchwefel(5);
 	

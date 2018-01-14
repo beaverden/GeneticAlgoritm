@@ -1,12 +1,6 @@
 #include "stdafx.hpp"
-#include <map>
-#include <fstream>
 #include "Salesman.h"
-#include <set>
-#include <assert.h>
-#include <algorithm>
-#include <time.h>
-#include "../../include/GeneticAlgorithm.hpp"
+
 
 
 
