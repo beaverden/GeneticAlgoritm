@@ -17,7 +17,7 @@
 #include <future>
 #include <vector>
 #include <experimental/filesystem>
-#define NO_ITERATIONS 1
+#define NO_ITERATIONS 4
 
 void dump_func(
 	std::function<std::pair<double, double>(size_t, size_t, size_t, std::ofstream*)> func,
@@ -65,8 +65,6 @@ void dump_salesman(
 )
 {
 	std::cout << testcase << std::endl;
-	std::experimental::filesystem::path pPath = std::experimental::filesystem::current_path();
-	std::string path = pPath.generic_string();
 	std::string valuesFileName = "test_data/" + testcase + ".txt";
 	std::string optimalFileName = "test_data/" + testcase + ".optimal.txt";
 	std::cout << valuesFileName << std::endl;
@@ -130,7 +128,8 @@ void dump_salesman(
 
 	std::string outFileName = "Raport\\Raport_" + testcase + ".txt";
 	std::ofstream outFile(outFileName, std::ios_base::app);
-	outFile << testcase << " " << avgValue << " " << avgTime << " s" << std::endl;
+	outFile << testcase << " " << avgValue << " " << avgTime << " s" << 
+		"Best: " << optResult << std::endl;
 	outFile.close();
 
 	for (size_t i = 0; i < N; i++)
@@ -143,19 +142,8 @@ void dump_salesman(
 int main(int argc, char* argv[])
 {
 	/*
-	TestSalesman(
-		"D:/Google Drive/Study/Univ/Anul 2 Sem 1/AG/Tema2/GeneticAlgorithm/GeneticAlgorithm/test_data/bays29.txt", 
-		"D://Google Drive/Study//Univ//Anul 2 Sem 1//AG//Tema2//GeneticAlgorithm//GeneticAlgorithm//test_data//bays29.optimal.txt"
-	);
-	*/
-	dump_salesman("bayg29");
-	/*
-	TestSalesman(
-		"D:/Google Drive/Study/Univ/Anul 2 Sem 1/AG/Tema2/GeneticAlgorithm/GeneticAlgorithm/test_data/att48.txt",
-		"D:/Google Drive/Study/Univ/Anul 2 Sem 1/AG/Tema2/GeneticAlgorithm/GeneticAlgorithm/test_data/att48.optimal.txt"
-	);
-	*/
-	/*
+	dump_salesman("att48");
+
 	//SuperviseRastrigin(5);
 	//SuperviseSchwefel(5);
 	

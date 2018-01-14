@@ -1,5 +1,6 @@
 #include "stdafx.hpp"
 #include "Griewangk.hpp"
+#include <math.h>
 
 double to_float(uint64_t val, GriewangkContext* global)
 {

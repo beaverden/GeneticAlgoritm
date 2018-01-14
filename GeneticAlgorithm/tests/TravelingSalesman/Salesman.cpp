@@ -5,6 +5,7 @@
 #include <set>
 #include <assert.h>
 #include <algorithm>
+#include <time.h>
 #include "../../include/GeneticAlgorithm.hpp"
 
 
@@ -71,7 +72,7 @@ double Evaluate(const ChromossomePtr& ch, void* globalContext)
 	}
 	sum += context->matrix[elems[context->N - 1]][elems[0]];
 	assert(elements.size() == context->N);
-	delete elems;
+	delete[] elems;
 	return sum;
 }
 
@@ -99,6 +100,7 @@ void customMutation(ChromossomePtr ch, void* globalContext)
 	uint64_t elem2 = GetAtPosition(ch, context->valueLength, second);
 	SetAtPosition(ch, context->valueLength, second, elem1);
 	SetAtPosition(ch, context->valueLength, first, elem2);
+	delete[] elems;
 }
 
 ChromossomePtr probeFrom(const ChromossomePtr& ch1, const ChromossomePtr& ch2, void* globalContext)
@@ -169,6 +171,7 @@ std::pair<double, double> TestSalesman(GlobalContext* context)
 	data.tournamentSize = 70;
 	data.threaded = false;
 
+	const clock_t begin_time = clock();
 	GeneticAlgorithm algo(&data);
 	double bestValue = -1;
 	for (size_t i = 0; i < 1000; i++)
@@ -180,5 +183,9 @@ std::pair<double, double> TestSalesman(GlobalContext* context)
 		if (bestValue == -1) bestValue = value;
 		else bestValue = std::min(bestValue, value);
 	}
-	return std::make_pair(bestValue, 0);
+
+	const clock_t end_time = clock();
+	double time = (double)(end_time - begin_time) / CLOCKS_PER_SEC;
+
+	return std::make_pair(bestValue, time);
 }
